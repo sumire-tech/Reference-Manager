@@ -1,0 +1,138 @@
+/* 全体 */
+body {
+    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: linear-gradient(135deg, #eef2f3, #dfe9f3);
+    color: #2c3e50;
+}
+
+/* 見出し */
+h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: #1a202c;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+h2 {
+    color: #2d3748;
+    margin-top: 30px;
+    font-size: 1.3rem;
+    border-left: 4px solid #3498db;
+    padding-left: 10px;
+}
+
+/* カード風フォーム */
+form {
+    margin: 20px auto;
+    background: #ffffff;
+    padding: 20px 25px;
+    border-radius: 12px;
+    /*box-shadow: 0 4px 12px rgba(0,0,0,0.08);*/
+    max-width: 600px;
+}
+
+/* ラベル・入力 */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+input, textarea, select {
+    margin-top: 8px;
+    padding: 10px 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+input:focus, textarea:focus, select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ボタン */
+button {
+    margin-top: 20px;
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    color: white;
+    font-weight: 600;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+button:hover {
+    background: linear-gradient(135deg, #2980b9, #1f6391);
+} 
+/* テーブル */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+th, td {
+    padding: 14px 16px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+th {
+    background-color: #f8fafc;
+    color: #374151;
+    font-weight: 600;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* リンク */
+a {
+    color: #3498db;
+    font-weight: 500;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* ステータスセレクト */
+select[name="status"] {
+    font-weight: bold;
+    border: 1px solid #ccc;
+    background: #ffffff;
+    color: #374151; 
+}
+
+/* 各ステータスの option にだけ色を反映 */
+option[value="To-Read"] {
+    background-color: #fef3c7; /* 淡い黄色 */
+    color: #92400e;
+}
+option[value="In-Progress"] {
+    background-color: #ffedd5; /* 淡いオレンジ */
+    color: #9a3412;
+}
+option[value="Read"] {
+    background-color: #d1fae5; /* 淡い緑 */
+    color: #065f46;
+}

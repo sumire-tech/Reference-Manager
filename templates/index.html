@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Reference Manager</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <!-- 入力フォーム -->
+        <h1>Reference Manager</h1>
+
+        <h2>Add new reference</h2>
+        <form action="/add" method="post">
+            <label>Title:</label>
+            <input type= "text"  name="title" required><br>
+
+            <label>Authors:</label>
+            <input type="text" name="authors"><br>
+
+            <label>Year:</label>
+            <input type="number" name="year"><br>
+
+            <label>Link:</label>
+            <input type="url" name="link" required><br>
+
+            <label>Status:</label>
+            <select id="status" name="status" required>
+                <option value="To Read">To-Read</option>
+                <option value="In Progress">In-Progress</option>
+                <option value="Read">Read</option>
+            </select><br>
+
+            <label>Memo:</label>
+            <textarea name="memo"></textarea><br>
+
+            <button type="submit">Add Reference</button>
+        </form>
+
+        <!-- 文献リスト-->
+         <h2>Reference List</h2>
+         <table>
+            <tr>
+                <th>Title</th>
+                <th>Authors</th>
+                <th>Year</th>
+                <th>Link</th>
+                <th>Status</th>
+                <th>Memo</th>
+                <th></th>
+            </tr>
+            {% for ref in papers %}
+            <tr>
+                <td>{{ ref[1] }}</td>  <!-- title -->
+                <td>{{ ref[2] }}</td>  <!-- authors -->
+                <td>{{ ref[3] }}</td>  <!-- year -->
+                <td><a href="{{ ref[4] }}" target="_blank">Link</a></td>  <!-- link -->
+                <td><!-- status -->
+                    <form action="{{ url_for('update_status', ref_id=ref[0]) }}" method="post">
+                        <select name="status" onchange="this.form.submit()">
+                            <option value="To-Read" {% if ref[5] == 'To-Read' %}selected{% endif %}>To-Read</option>
+                            <option value="In-Progress" {% if ref[5] == 'In-Progress' %}selected{% endif %}>In-Progress</option>
+                            <option value="Read" {% if ref[5] == 'Read' %}selected{% endif %}>Read</option>
+                        </select>
+                    </form>
+                </td>
+                <td>{{ ref[7] }}</td>  <!-- memo -->
+                <td>
+                <form action="{{ url_for('delete_reference', ref_id=ref[0]) }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('本当に削除しますか？');">Delete</button>
+                </form>
+                </td>
+            </tr>
+            {% endfor %}
+         </table>
+    </body>
+</html>
